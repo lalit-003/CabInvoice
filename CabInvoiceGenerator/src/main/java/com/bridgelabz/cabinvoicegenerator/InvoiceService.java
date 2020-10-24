@@ -8,8 +8,9 @@ public class InvoiceService {
 	double totalFare;
 	private RideRepository rideRepository;
 
-	public InvoiceService() {
-		this.rideRepository = new RideRepository();
+	public void setRepository(RideRepository rideRepository)
+	{
+		this.rideRepository= new RideRepository();
 	}
 
 	public double calculateFare(double distance, double time) {
@@ -20,7 +21,7 @@ public class InvoiceService {
 	public InvoiceSummary calculateFare(Ride[] rides) {
 		double fare =0;
 		for (Ride ride : rides) {
-			fare += this.calculateFare(ride.distance, ride.time);
+			fare +=ride.cabRideType.calculateRideCost(ride);
 		}
 		return new InvoiceSummary(rides.length, fare);
 	}
