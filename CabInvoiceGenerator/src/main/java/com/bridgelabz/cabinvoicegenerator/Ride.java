@@ -4,9 +4,11 @@ public class Ride {
 
 	public double distance;
 	public double time;
+	public CabRideType cabRideType;
 	
-	public Ride( double distance,double time)
+	public Ride(CabRideType cabRideType, double distance,double time)
 	{
+		this.cabRideType=cabRideType;
 		this.time = time;
 		this.distance = distance;
 	}
